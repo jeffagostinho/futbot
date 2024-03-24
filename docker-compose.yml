@@ -1,0 +1,17 @@
+version: "3"
+
+volumes:
+  futbot-mongodb-data:
+    driver: local
+
+services:
+  futbot-mongo:
+    image: mongo:6
+    container_name: futbot-mongo
+    restart: always
+    environment:
+      - MONGODB_URI=mongodb://futbot-mongo:27017/futbot
+    volumes:
+      - futbot-mongodb-data:/data/db
+    ports:
+      - "27018:27017"
